@@ -1,0 +1,205 @@
+{
+  "project": "Letterboxd multi-label genre prediction",
+  "seed": 470,
+  "labels": [
+    "Action",
+    "Comedy",
+    "Drama",
+    "Horror",
+    "Romance"
+  ],
+  "split_sizes": {
+    "train": 7020,
+    "validation": 1490,
+    "test": 1490
+  },
+  "features": {
+    "tfidf_max_features": 1000,
+    "min_df": 2,
+    "ngram": "unigram",
+    "pca_components": 704
+  },
+  "threshold_selection": "shared threshold selected on validation macro-F1; test split not used",
+  "models": {
+    "u2_knn": {
+      "artifact": "models/u2_knn.joblib",
+      "uses_pca": true,
+      "threshold": 0.16000000000000003,
+      "validation_metrics": {
+        "macro_f1": 0.5059777248368552,
+        "macro_roc_auc": 0.736836707944396,
+        "exact_match_accuracy": 0.052348993288590606
+      },
+      "training_seconds": 0.98,
+      "prediction_strategy": "multi-output distance-weighted KNN; equivalent per label to OVR and stores shared neighbors once"
+    },
+    "u3_logistic_regression": {
+      "artifact": "models/u3_logistic_regression.joblib",
+      "uses_pca": true,
+      "threshold": 0.2,
+      "validation_metrics": {
+        "macro_f1": 0.5393519464818171,
+        "macro_roc_auc": 0.7778967264411343,
+        "exact_match_accuracy": 0.1704697986577181
+      },
+      "training_seconds": 2.23
+    },
+    "u4_decision_tree": {
+      "artifact": "models/u4_decision_tree.joblib",
+      "uses_pca": true,
+      "threshold": 0.14,
+      "validation_metrics": {
+        "macro_f1": 0.4235627728255138,
+        "macro_roc_auc": 0.613088973286018,
+        "exact_match_accuracy": 0.024832214765100672
+      },
+      "training_seconds": 41.05
+    },
+    "u5_random_forest": {
+      "artifact": "models/u5_random_forest.joblib",
+      "uses_pca": true,
+      "threshold": 0.15000000000000002,
+      "validation_metrics": {
+        "macro_f1": 0.4279285360776376,
+        "macro_roc_auc": 0.6555370500007521,
+        "exact_match_accuracy": 0.04563758389261745
+      },
+      "training_seconds": 61.72
+    },
+    "u5_gradient_boosting": {
+      "artifact": "models/u5_gradient_boosting.joblib",
+      "uses_pca": true,
+      "threshold": 0.09000000000000001,
+      "validation_metrics": {
+        "macro_f1": 0.4763271914429896,
+        "macro_roc_auc": 0.7190043119064777,
+        "exact_match_accuracy": 0.14966442953020134
+      },
+      "training_seconds": 85.73
+    },
+    "u6_linear_svm": {
+      "artifact": "models/u6_linear_svm.joblib",
+      "uses_pca": false,
+      "threshold": 0.5000000000000001,
+      "validation_metrics": {
+        "macro_f1": 0.5220906315637649,
+        "macro_roc_auc": 0.7750681409593877,
+        "exact_match_accuracy": 0.2738255033557047
+      },
+      "training_seconds": 0.93
+    },
+    "u7_mlp": {
+      "artifact": "models/u7_mlp.pt",
+      "uses_pca": false,
+      "threshold": 0.4600000000000001,
+      "best_epoch": 5,
+      "epochs_run": 9,
+      "validation_loss": 0.8527634850284397,
+      "validation_metrics": {
+        "macro_f1": 0.5003463780731028,
+        "macro_roc_auc": 0.7665135674969792,
+        "exact_match_accuracy": 0.12281879194630872
+      },
+      "parameters": 136709,
+      "time_seconds": 2.95,
+      "hidden": [
+        128,
+        64
+      ],
+      "dropout": 0.2,
+      "learning_rate": 0.001
+    },
+    "u8_mlp_dropout0": {
+      "artifact": "models/u8_mlp_dropout0.pt",
+      "uses_pca": false,
+      "threshold": 0.4800000000000001,
+      "best_epoch": 5,
+      "epochs_run": 9,
+      "validation_loss": 0.8491579298205023,
+      "validation_metrics": {
+        "macro_f1": 0.5009081472631116,
+        "macro_roc_auc": 0.7688460225127844,
+        "exact_match_accuracy": 0.1691275167785235
+      },
+      "parameters": 136709,
+      "time_seconds": 2.24,
+      "hidden": [
+        128,
+        64
+      ],
+      "dropout": 0.0,
+      "learning_rate": 0.001
+    },
+    "u8_mlp_dropout02": {
+      "artifact": "models/u8_mlp_dropout02.pt",
+      "uses_pca": false,
+      "threshold": 0.4600000000000001,
+      "best_epoch": 5,
+      "epochs_run": 9,
+      "validation_loss": 0.8527634850284397,
+      "validation_metrics": {
+        "macro_f1": 0.5003463780731028,
+        "macro_roc_auc": 0.7665135674969792,
+        "exact_match_accuracy": 0.12281879194630872
+      },
+      "parameters": 136709,
+      "time_seconds": 2.64,
+      "hidden": [
+        128,
+        64
+      ],
+      "dropout": 0.2,
+      "learning_rate": 0.001
+    },
+    "u8_mlp_large": {
+      "artifact": "models/u8_mlp_large.pt",
+      "uses_pca": false,
+      "threshold": 0.5000000000000001,
+      "best_epoch": 5,
+      "epochs_run": 9,
+      "validation_loss": 0.8457910222495162,
+      "validation_metrics": {
+        "macro_f1": 0.5063301894153234,
+        "macro_roc_auc": 0.7729612362556244,
+        "exact_match_accuracy": 0.2040268456375839
+      },
+      "parameters": 289797,
+      "time_seconds": 3.41,
+      "hidden": [
+        256,
+        128
+      ],
+      "dropout": 0.2,
+      "learning_rate": 0.001
+    },
+    "u8_mlp_lr0005": {
+      "artifact": "models/u8_mlp_lr0005.pt",
+      "uses_pca": false,
+      "threshold": 0.5000000000000001,
+      "best_epoch": 11,
+      "epochs_run": 15,
+      "validation_loss": 0.8480188649772797,
+      "validation_metrics": {
+        "macro_f1": 0.5114660816487595,
+        "macro_roc_auc": 0.7720851812712131,
+        "exact_match_accuracy": 0.22013422818791947
+      },
+      "parameters": 136709,
+      "time_seconds": 4.27,
+      "hidden": [
+        128,
+        64
+      ],
+      "dropout": 0.2,
+      "learning_rate": 0.0005
+    }
+  },
+  "u8_selected_mlp": "u8_mlp_lr0005",
+  "environment": {
+    "python": "3.13.0",
+    "scikit_learn": "1.6.1",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.2.3",
+    "pandas": "2.2.3"
+  }
+}
