@@ -1,5 +1,9 @@
 # Letterboxd Film Türü Tahmini
 
+## Canlı site
+
+[Movie Genre Predictor’ı aç](https://movie-genreprediction-ai.onrender.com/)
+
 Film açıklamalarından beş tür etiketini tahmin eden çok etiketli metin sınıflandırma projesi. Her film için **Action, Comedy, Drama, Horror** ve **Romance** etiketlerinin her biri ayrı ayrı tahmin edilir; dolayısıyla bir filme birden fazla tür atanabilir.
 
 Bu depo, BIL/YAP 470 boyunca U2–U8 haftalarında aynı Letterboxd projesine uygulanan yöntemlerin kaynak kodunu, eğitilmiş modellerini, ön işleme dosyalarını, örnek girdi dosyasını ve karşılaştırma raporunu içerir.
