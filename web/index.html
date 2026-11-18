@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f8">
+  <title>Movie Genre Predictor</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Yan menü">
+      <a class="brand" href="/" aria-label="Movie Genre Predictor ana sayfa">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span>Movie Genre Predictor</span>
+      </a>
+      <button class="new-chat" id="new-chat" type="button">
+        <span aria-hidden="true">＋</span> Yeni deneme
+      </button>
+      <div class="sidebar-note">
+        <span class="note-icon" aria-hidden="true">◉</span>
+        <p>Film açıklamasını gönder, farklı modellerin tür tahminlerini karşılaştır.</p>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="local-badge"><span></span> Yerel ve kayıtsız</div>
+        <p>Bu sayfadaki denemeler geçmişe kaydedilmez.</p>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark" aria-hidden="true">M</span> Movie Genre Predictor</div>
+        <label class="model-select-wrap" for="model-select" title="Seçeneklerdeki skorlar doğrulama Macro-F1 değeridir; test skoru değildir.">
+          <span>Model · doğrulama Macro-F1</span>
+          <select id="model-select" aria-label="Tahmin modeli">
+            <option value="u3_logistic_regression">U3 · Lojistik regresyon</option>
+          </select>
+          <span class="select-chevron" aria-hidden="true"></span>
+        </label>
+      </header>
+
+      <section class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-mark" aria-hidden="true">L</div>
+          <h1>Film türünü keşfet</h1>
+          <p>Bir film açıklaması yaz. Seçtiğin model beş tür için tahminini ve olasılıklarını göstersin.</p>
+          <div class="suggestions" aria-label="Örnek açıklamalar">
+            <button type="button" class="suggestion">A detective investigates a series of mysterious events in a small town.</button>
+            <button type="button" class="suggestion">Two friends travel across the country and discover an unexpected romance.</button>
+          </div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <form class="composer-area" id="composer-form">
+        <div class="composer" id="composer">
+          <textarea id="description" rows="1" maxlength="5000" placeholder="Film açıklamasını buraya yaz..." aria-label="Film açıklaması"></textarea>
+          <button class="send-button" id="send-button" type="submit" aria-label="Tahmin et">
+            <span aria-hidden="true">↑</span>
+          </button>
+        </div>
+        <div class="composer-hint">
+          <span>Enter ile gönder · Shift+Enter ile yeni satır</span>
+          <span id="character-count">0 / 5000</span>
+        </div>
+        <p class="disclaimer">Tahminler proje kapsamında eğitilmiş modellerden gelir; sonuçlar kesin tür etiketi değildir.</p>
+      </form>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

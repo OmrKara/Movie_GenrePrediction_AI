@@ -130,6 +130,20 @@ print(predictions)   # Her etiket için *_prob ve *_pred sütunları
 print(probabilities) # Sıra: Action, Comedy, Drama, Horror, Romance
 ```
 
+## Web arayüzü
+
+Modelleri tarayıcıda deneyebilmek için proje klasöründe sanal ortamı etkinleştirin, bağımlılıkları kurun ve yerel sunucuyu başlatın:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install -e .
+python -m letterboxd_project.webapp --port 8765
+```
+
+Tarayıcıda [http://127.0.0.1:8765](http://127.0.0.1:8765) adresini açın. Metin alanına film açıklaması yazıp gönderin; üst menüden U2–U8 modellerinden birini seçebilirsiniz. Her model adının yanındaki Macro-F1, `artifacts/model_registry.json` içindeki doğrulama Macro-F1 skorudur; test skoru değildir. Sonuç kartı eşik üstündeki türleri, en yüksek skorlu türü ve beş türün tamamı için olasılık skorlarını gösterir. Modeller, kayıt dosyasındaki doğrulama eşiğini kullanır.
+
+Arayüz sohbet benzeri görünür, ancak konuşmaları dosyaya ya da tarayıcı depolamasına kaydetmez. Sunucu varsayılan olarak yalnızca kendi bilgisayarınızdan (`127.0.0.1`) erişilir ve terminalde `Ctrl+C` ile durdurulur. Tahmin arayüzü `web/` içindeki HTML, CSS ve JavaScript dosyalarından; tahmin API'si mevcut Python model kodundan yararlanır.
+
 ## Modelleri yeniden eğitme
 
 Ham veri depoda bulunmaz. [Kaggle veri kaynağından](https://www.kaggle.com/datasets/gsimonx37/letterboxd) `movies.csv` ve `genres.csv` dosyalarını indirin ve aşağıdaki konumlara koyun:
